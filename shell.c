@@ -38,11 +38,3 @@ int shell(int ac, char  **av)
 	}
 	return (status);
 }
-
-
-
-
-
-
-
-vciohguih94u9chfuuh94f
