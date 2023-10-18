@@ -1,17 +1,17 @@
 #include "shell.h"
 
 /**
- * main - Custom simple shell
+ * shell - Custom simple shell
  *
- * @ac: The Argument Count.
- * @av: The Argument Vector.
- * Return: The exit code -status- of the last command
+ * @ac: Argument count
+ * @av: Argument vector
+ * Return: The Exit code
  */
-int main(int ac, char  **av)
+int shell(int ac, char  **av)
 {
 	char *input = NULL;
 	char **process = NULL;
-	int status = 0;
+	int status = 0, prompt_no = 0;
 	(void) ac;
 
 	while (1)
@@ -23,11 +23,13 @@ int main(int ac, char  **av)
 				write(STDOUT_FILENO, "\n", 1);
 			return (status);
 		}
+		prompt_no++;
 		process = tokenize_command(input);
 		if (!process)
 			continue;
-		status = execute_command(process, av);
+
+		status = execute_command(process, av, prompt_no);
+
 	}
 	return (status);
 }
-
