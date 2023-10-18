@@ -9,7 +9,6 @@
  */
 int main(int ac, char  **av)
 {
-	int i;
 	char *input = NULL;
 	char **process = NULL;
 	int status = 0;
@@ -27,12 +26,6 @@ int main(int ac, char  **av)
 		process = tokenize_command(input);
 		if (!process)
 			continue;
-		i = _fork(process[0]);
-		if (i == 1)
-		{
-			free_command(process);
-			exit(status);
-		}
 		status = execute_command(process, av);
 	}
 	return (status);
