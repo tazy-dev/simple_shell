@@ -50,4 +50,5 @@ void print_number(int);
 
 /*shell_builtins.c*/
 void exit_builtin(char **, int);
+void env_builtin(void);
 #endif

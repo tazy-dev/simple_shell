@@ -29,8 +29,12 @@ int shell(int ac, char  **av)
 			continue;
 		if (_strcmp(process[0], "exit") == 0)
 			exit_builtin(process, status);
-		status = execute_command(process, av, prompt_no);
-
+		else if (_strcmp(process[0], "env") == 0)
+		{
+			env_builtin();
+			free_command(process);
+		} else
+			status = execute_command(process, av, prompt_no);
 	}
 	return (status);
 }
