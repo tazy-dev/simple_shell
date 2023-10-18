@@ -17,6 +17,7 @@
 #include <sys/stat.h>
 
 #define DELIMITER " \n\t"
+#define BUFFER_SIZE 15000
 extern char **environ;
 
 
@@ -42,6 +43,8 @@ int _strcmp(char *, char *);
 
 /*string_funcs_2.c module*/
 char *_strchr(char *, int);
+ssize_t _getline(char **, size_t *, FILE *);
+char *_strdup_lim(char *, ssize_t);
 
 /*utillity.c module*/
 char *expand_command(char *, char *, size_t);

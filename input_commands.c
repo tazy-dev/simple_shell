@@ -14,7 +14,7 @@ char *read_command()
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "$ ", 2);
 
-	bytesReadNo = getline(&buffer, &buf_size, stdin);
+	bytesReadNo = _getline(&buffer, &buf_size, stdin);
 	if (bytesReadNo == -1)
 	{
 		free(buffer), buffer = NULL;
