@@ -45,15 +45,16 @@ int _strcmp(char *, char *);
 char *_strchr(char *, int);
 ssize_t _getline(char **, size_t *, FILE *);
 char *_strdup_lim(char *, ssize_t);
-char *_strtok(char *, const char *);
-int _strchr2(const char *, int);
+int _is_pos_digit(char *);
 
 /*utillity.c module*/
 char *expand_command(char *, char *, size_t);
 void _perror(char *, char *, int);
 void print_number(int);
+int _atoi(char *);
+void exit_error(char *, char *, int);
 
 /*shell_builtins.c*/
-void exit_builtin(char **, int);
+void exit_builtin(char **, char **, int *, int);
 void env_builtin(void);
 #endif

@@ -41,7 +41,7 @@ char **tokenize_command(char *ip)
 		return (NULL);
 	}
 	tmp = _strdup(ip);
-	token = _strtok(tmp, DELIMITER);
+	token = strtok(tmp, DELIMITER);
 	if (token == NULL)
 	{
 		free(ip), ip = NULL;
@@ -51,7 +51,7 @@ char **tokenize_command(char *ip)
 	while (token)
 	{
 		counter++;
-		token = _strtok(NULL, DELIMITER);
+		token = strtok(NULL, DELIMITER);
 	}
 	free(tmp), tmp = NULL;
 	process = malloc(sizeof(char *) * (counter + 1));
@@ -60,11 +60,11 @@ char **tokenize_command(char *ip)
 		free(ip), ip = NULL;
 		return (NULL);
 	}
-	token = _strtok(ip, DELIMITER);
+	token = strtok(ip, DELIMITER);
 	while (token)
 	{
 		process[index] = _strdup(token);
-		token = _strtok(NULL, DELIMITER);
+		token = strtok(NULL, DELIMITER);
 		index++;
 	}
 	free(ip), ip = NULL;

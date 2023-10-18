@@ -62,7 +62,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 }
 /**
  * _strdup_lim - Duplicate the string given as parameter
- *			and stops if '\n' is encoutered
+ *					and stops if '\n' is encoutered
  * @str: string to duplicate read_len
  * @read_len: Length of command read
  *
@@ -88,68 +88,23 @@ char *_strdup_lim(char *str, ssize_t read_len)
 }
 
 /**
- * _strtok - Splits input string to tokens according to
- *					the delimeteres
- * @str: string to tokenize
- * @delim: list of delimeters
+ * _is_pos_digit - Checks for  digits (0-9).
+ * @s: The String to be checked.
  *
- * Return: The resultant token
+ * Return: 1 if the number is a digit, 0 otherwise.
  */
-char *_strtok(char *str, const char *delim)
+int _is_pos_digit(char *s)
 {
-	static char *buffer;
-	static int i;
-	int idx = 0;
+	int i = 0;
 
-	if (str == NULL && buffer == NULL)
-		return (NULL);
-	if (str == NULL && buffer[i] == '\0')
+	while (s[i] != '\0')
 	{
-		free(buffer);
-		i = 0;
-		return (NULL);
+		if (s[i] >= '0' && s[i] <= '9')
+		{
+			i++;
+			continue;
+		}
+		return (0);
 	}
-	if (str != NULL)
-	{
-		i = 0;
-		buffer = _strdup(str);
-	}
-	else
-		str = malloc(_strlen(buffer));
-	while (buffer[i] != '\0')
-	{
-		if (_strchr2(delim, buffer[i]) != 0)
-			break;
-		str[idx] = buffer[i];
-		i++;
-		idx++;
-	}
-	str[idx] = '\0';
-	i++;
-	while (buffer[i] != '\0')
-	{
-		if (_strchr2(delim, buffer[i]) == 0)
-			break;
-		i++;
-	}
-	return (str);
-}
-/**
- * _strchr2 - locates a character in a string
- * @s: string to search
- * @c: char to find
- *
- * Return: a pointer to the first occurrence of the character
- * c in the string s, or NULL if the character is not found
- */
-int _strchr2(const char *s, int c)
-{
-	while (1)
-	{
-		if (*s == c)
-			return (1);
-		else if (*s == '\0')
-			return (0);
-		s++;
-	}
+	return (1);
 }

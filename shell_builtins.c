@@ -3,12 +3,29 @@
  * exit_builtin - cause normal process termination
  *
  * @command: The Command passed to the shell
- * @status: The exit status
+ * @av: The argument vector
+ * @status: Pointer to the status variable
+ * @prompt_num: Shell prompt number
  */
-void exit_builtin(char **command, int status)
+void exit_builtin(char **command, char **av, int *status, int prompt_num)
 {
+	int val = *status;
+
+	if (command[1])
+	{
+		if (_is_pos_digit(command[1]))
+			val = _atoi(command[1]);
+		else
+		{
+			exit_error(av[0], command[1], prompt_num);
+			free_command(command);
+			*status = 2;
+			return;
+		}
+	}
+
 	free_command(command);
-	exit(status);
+	exit(val);
 }
 /**
  * env_builtin - prints the current enviroment

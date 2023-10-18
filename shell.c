@@ -28,7 +28,7 @@ int shell(int ac, char  **av)
 		if (!process)
 			continue;
 		if (_strcmp(process[0], "exit") == 0)
-			exit_builtin(process, status);
+			exit_builtin(process, av, &status, prompt_no);
 		else if (_strcmp(process[0], "env") == 0)
 		{
 			env_builtin();
