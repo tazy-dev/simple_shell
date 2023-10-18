@@ -45,6 +45,8 @@ int _strcmp(char *, char *);
 char *_strchr(char *, int);
 ssize_t _getline(char **, size_t *, FILE *);
 char *_strdup_lim(char *, ssize_t);
+char *_strtok(char *, const char *);
+int _strchr2(const char *, int);
 
 /*utillity.c module*/
 char *expand_command(char *, char *, size_t);
