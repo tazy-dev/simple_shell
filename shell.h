@@ -47,4 +47,7 @@ char *_strchr(char *, int);
 char *expand_command(char *, char *, size_t);
 void _perror(char *, char *, int);
 void print_number(int);
+
+/*shell_builtins.c*/
+void exit_builtin(char **, int);
 #endif

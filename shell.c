@@ -27,7 +27,8 @@ int shell(int ac, char  **av)
 		process = tokenize_command(input);
 		if (!process)
 			continue;
-
+		if (_strcmp(process[0], "exit") == 0)
+			exit_builtin(process, status);
 		status = execute_command(process, av, prompt_no);
 
 	}
