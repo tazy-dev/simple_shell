@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * shell - Custom simple shell
+ * main - Custom simple shell
  *
  * @ac: The Argument Count.
  * @av: The Argument Vector.
